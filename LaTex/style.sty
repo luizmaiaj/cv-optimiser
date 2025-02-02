@@ -1,0 +1,134 @@
+% style.sty - CV Style Package
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style}[2024/02/01 Custom CV Style]
+
+% Required packages
+\RequirePackage{fontspec}
+\RequirePackage{titlesec}
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+\RequirePackage{enumitem}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+\RequirePackage{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{pdfcomment}
+
+% Paragraph setup
+\setlength{\parindent}{0pt}  % Removes paragraph indentation
+
+% Font setup
+\setmainfont{Lato}[
+    UprightFont = * Regular,
+    BoldFont = * Bold,
+    ItalicFont = * Italic,
+    BoldItalicFont = * Bold Italic
+]
+
+% Icons setup
+% TODO: correct the font installation
+\newfontfamily{\fa}{Font Awesome 6 Free}[
+    Path = /path/to/fonts/,
+    Extension = .otf,
+    UprightFont = *-Solid-900
+]
+
+\newcommand{\faEnvelope}{\fa \symbol{"F0E0}}
+\newcommand{\faPhone}{\fa \symbol{"F095}}
+
+% Page geometry and layout
+\geometry{
+    a4paper,
+    top=1cm,
+    bottom=1cm,
+    left=1.5cm,
+    right=1.5cm
+}
+
+% Colors
+\definecolor{primarycolor}{RGB}{0, 51, 102}  % Dark blue
+\definecolor{secondarycolor}{RGB}{100, 100, 100}  % Dark gray
+\definecolor{accentcolor}{RGB}{0, 102, 204}  % Bright blue
+
+% Header style
+\titleformat{\section}
+    {\Large\bfseries\color{primarycolor}}
+    {}{0em}
+    {}[\titlerule]
+\titlespacing*{\section}{0pt}{12pt}{8pt}
+
+% Subsection style
+\titleformat{\subsection}
+    {\large\bfseries\color{secondarycolor}}
+    {}{0em}
+    {}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+
+% Custom commands for CV sections
+\newcommand{\cvheader}[5]{%
+    \begin{minipage}[t]{0.3\textwidth}
+        {\Huge\bfseries\color{primarycolor}#1}
+    \end{minipage}%
+    \begin{minipage}[t]{0.7\textwidth}
+        {\Large\color{secondarycolor}#2}\\[2pt]
+        {\normalsize\color{secondarycolor}
+        \faEnvelope{\space{\normalfont #3}} \quad
+        \space{\normalfont #4} \quad
+        \faPhone{\space{\normalfont #5}}
+        }
+    \end{minipage}
+}
+
+\newcommand{\cvsection}[1]{%
+    \section{#1}
+}
+
+\newcommand{\cvsubsection}[1]{%
+    \subsection{#1}
+}
+
+\newcommand{\cvitem}[2]{%
+    \textbf{#1}: #2\par
+}
+
+\newcommand{\cvexperience}[7]{%
+    \subsection{#1}%
+    {\href{#2}{\textbf{#3}} -- #4 \hfill #5 -- #6\par}%
+    #7\par
+}
+
+\newcommand{\cveducation}[4]{%
+    \textbf{#1} & #2 \\
+    #3 & #4
+}
+
+\newcommand{\cvskill}[2]{%
+    \textbf{#1} & #2
+}
+
+% List environments
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accentcolor,
+    filecolor=accentcolor,
+    urlcolor=accentcolor,
+    pdftitle={Professional CV - Digital Transformation and AI},
+    pdfauthor={CV Owner},
+    pdfsubject={Curriculum Vitae},
+    pdfkeywords={Digital Transformation, AI, Program Management, Portfolio Management, Project Management, PMO, Agile, Python, SwiftUI},
+    pdfcreator={XeLaTeX},
+    pdfproducer={XeLaTeX}
+}
+
+% Header and footer style
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{}
+
+\endinput

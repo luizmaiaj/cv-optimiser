@@ -1,0 +1,38 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{style}
+
+\usepackage{multicol}
+
+% Inputs
+\input{summary}
+\input{experience}
+\input{projects}
+\input{skills}
+\input{skills-short}
+\input{education}
+
+\newif\ifshortversion
+\shortversiontrue % default to short version
+
+\newif\ifprojects
+\projectsfalse % default to no projects
+
+\begin{document}
+
+\cvheader{John Doe}{Digital Transformation, AI | Program Management, MBA}{john.doe@example.com}{Nationality}{+1 234 567 890}
+\cvsummarysection
+
+\ifshortversion
+    \cvshortskillssection
+\else
+    \cvfullskillssection
+\fi
+
+\cvexperiencesetion
+\cveducationsection
+
+\ifprojects
+    \cvprojectssection
+\fi
+
+\end{document}
