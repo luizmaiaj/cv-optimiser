@@ -1,0 +1,15 @@
+% Header
+\newcommand{\cvheader}[5]{%
+    \begin{minipage}[t]{0.3\textwidth}
+        {\Huge\bfseries\color{primarycolor}#1}
+    \end{minipage}%
+    \begin{minipage}[t]{0.7\textwidth}
+        {\Large\color{secondarycolor}#2}\\[2pt]
+        {\normalsize\color{secondarycolor}
+        \faEnvelope{\space{\normalfont #3}} \quad
+        \space{\normalfont #4} \quad
+        \faPhone{\space{\normalfont #5}}
+        }
+    \end{minipage}%
+    \par%
+}
