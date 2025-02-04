@@ -13,6 +13,11 @@ Only tested on macOS.
 - 📝 Automated cover letter generation
 - 📌 Application tracking system (ATS) compatibility
 - 🔄 Version control for different applications
+- 📂 Automated application tracking and history
+- 🎨 Job-specific CV templating system
+- 📈 Skills match percentage calculation
+- 💼 Company research integration
+- 📋 Structured application organization
 
 ## Prerequisites
 
@@ -40,15 +45,30 @@ Only tested on macOS.
 
 ```
 .
-├── build.sh         # Build script for compiling LaTeX
-├── cv.tex           # Main CV template
-├── style.sty        # LaTeX style definitions
-├── summary.tex      # Professional summary
-├── experience.tex   # Work experience
-├── projects.tex     # Project portfolio
-├── skills.tex       # Detailed skills
-├── skills-short.tex # Condensed skills
-└── education.tex    # Education and certifications
+├── LaTex/                  # LaTeX template files
+│   ├── build.sh           # Build script for compiling LaTeX
+│   ├── cv.tex             # Main CV template
+│   ├── style.sty          # LaTeX style definitions
+│   ├── summary.tex        # Professional summary
+│   ├── experience.tex     # Work experience
+│   ├── projects.tex       # Project portfolio
+│   ├── skills.tex         # Detailed skills
+│   ├── skills-short.tex   # Condensed skills
+│   └── education.tex      # Education and certifications
+├── prompt.md              # AI assistant instructions
+└── readme.md              # Project documentation
+
+Generated Application Structure:
+/Users/USERNAME/CV/
+├── applications/
+│   └── YYYY-MM-DD/
+│       └── COMPANY_NAME/
+│           └── POSITION/
+│               ├── LaTeX/            # Job-specific CV files
+│               ├── build/            # Compiled outputs
+│               ├── *-JD.md          # Job description
+│               ├── *-CL.md          # Cover letter
+│               └── applications.json # Application tracking
 ```
 
 ## Important Notes
@@ -89,21 +109,35 @@ Only tested on macOS.
 
 ## Usage
 
-1. Update your CV content:
-   - Edit the relevant .tex files in the sections directory
+1. Prepare Your Base CV:
+   - Edit the relevant .tex files in the LaTeX directory
    - Customize your personal information in cv.tex
+   - Compile to test the base template:
+     ```bash
+     cd LaTeX && ./build.sh
+     ```
 
-2. Compile your CV:
-   ```bash
-   ./build.sh
-   ```
-   The compiled PDF will be available in the `build` directory.
+2. For Job Applications:
+   - The system will create an application directory structure:
+     `/Users/USERNAME/CV/applications/YYYY-MM-DD/COMPANY_NAME/POSITION/`
+   - Save the job description as `YYYY-MM-DD-COMPANY_NAME-POSITION-JD.md`
+   - The system will:
+     - Analyze the job description
+     - Research the company
+     - Calculate skills match percentage
+     - Generate a tailored CV
+     - Create a targeted cover letter
+     - Track the application in applications.json
 
-3. For AI-powered optimization:
+3. AI-Powered Optimization:
    - Use Claude Desktop with MCP
-   - Provide the job description
-   - Follow the AI's suggestions for CV optimization
-   - Generate a tailored version of your CV
+   - The AI will:
+     - Analyze company background and culture
+     - Identify key requirements and skills
+     - Optimize keyword placement
+     - Ensure ATS compatibility
+     - Generate a compelling cover letter
+     - Provide application insights and recommendations
 
 ## CV Template Features
 
@@ -114,6 +148,8 @@ Only tested on macOS.
 - Hyperlinked content
 - Multi-column layout where appropriate
 - Unicode support through XeLaTeX
+- Automated version control for different applications
+- Application tracking and history
 
 ## Contributing
 
